@@ -1,13 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/constants/helpers.dart';
+import 'package:food/views/home_page.dart';
 import 'package:food/widgets/big_text_widget.dart';
 
-class MainHomePage extends ConsumerWidget {
+class MainHomePage extends ConsumerStatefulWidget {
   const MainHomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _MainHomePageState();
+}
+
+class _MainHomePageState extends ConsumerState<MainHomePage> {
+  int selectedIndex = 0;
+  List<Widget> pages = [
+    const HomePage(),
+    Text("data2"),
+    Text("data3"),
+    Text("data4")
+  ];
+  void _onSelectedItem(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Helpers.foodBlack54),
@@ -38,6 +57,7 @@ class MainHomePage extends ConsumerWidget {
           )
         ],
       ),
+      // !this is the sidebar
       drawer: Drawer(
         elevation: 0,
         backgroundColor: Helpers.foodWhite,
@@ -147,6 +167,42 @@ class MainHomePage extends ConsumerWidget {
           ],
         ),
       ),
+      body: Container(
+          padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
+          child: pages[selectedIndex]),
+      bottomNavigationBar: BottomNavigationBar(
+          elevation: 0,
+          selectedItemColor: Helpers.foodorange800,
+          unselectedItemColor: Helpers.foodorange600,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          onTap: _onSelectedItem,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: Helpers.foodorange800,
+                ),
+                label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color: Helpers.foodorange800,
+                ),
+                label: "Account"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shopping_basket,
+                  color: Helpers.foodorange800,
+                ),
+                label: "History"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.notifications,
+                  color: Helpers.foodorange800,
+                ),
+                label: "Notification"),
+          ]),
     );
   }
 }

@@ -12,5 +12,6 @@ class Helpers {
 
   // orange
   static Color foodorange800 = Colors.orange.shade800;
+  static Color foodorange600 = Colors.orange.shade600;
   static Color foodred700 = Colors.red.shade700;
 }
