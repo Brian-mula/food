@@ -9,6 +9,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
@@ -31,6 +32,117 @@ class HomePage extends ConsumerWidget {
             ],
           ),
         ),
+        Container(
+          padding: const EdgeInsets.only(left: 2, right: 2),
+          margin: const EdgeInsets.only(top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              heroItems(
+                  'https://cdn.pixabay.com/photo/2022/05/25/21/28/burger-7221436__340.jpg',
+                  "Burger"),
+              heroItems(
+                  'https://cdn.pixabay.com/photo/2015/12/09/17/12/popcorn-1085072__340.jpg',
+                  'Snacks'),
+              heroItems(
+                  "https://cdn.pixabay.com/photo/2016/12/20/21/43/orange-1921548__340.jpg",
+                  "Drinks"),
+              heroItems(
+                  "https://cdn.pixabay.com/photo/2017/01/10/19/05/watermelon-1969949__340.jpg",
+                  "Dessert")
+            ],
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 2, right: 2),
+          margin: const EdgeInsets.only(top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              heroItems(
+                  'https://cdn.pixabay.com/photo/2014/04/17/05/18/namdaemun-market-326146__340.jpg',
+                  "Vegetables"),
+              heroItems(
+                  'https://cdn.pixabay.com/photo/2018/01/01/17/57/fish-soup-3054627__340.jpg',
+                  'Noodles'),
+              heroItems(
+                  "https://cdn.pixabay.com/photo/2016/09/26/17/52/goulash-1696569__340.jpg",
+                  "Sea food"),
+              heroItems(
+                  "https://cdn.pixabay.com/photo/2014/07/15/19/04/fried-394171__340.jpg",
+                  "Eggs")
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 20),
+          child: BigTextWidget(
+            text: "Top of the week",
+            color: Helpers.foodorange600,
+            size: 18,
+          ),
+        ),
+        Container(
+          height: 250,
+          child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: ((context, index) {
+                return Row(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: const DecorationImage(
+                              image: NetworkImage(
+                                  "https://cdn.pixabay.com/photo/2018/07/18/19/12/pasta-3547078__340.jpg"))),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Expanded(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const BigTextWidget(
+                            text: "Fried chicken",
+                            color: Helpers.foodBlack87,
+                          ),
+                          const BigTextWidget(
+                            text: "Well fried and higly consumed",
+                            color: Helpers.foodBlack45,
+                            size: 14,
+                          ),
+                          BigTextWidget(
+                            text: "Ksh. 300",
+                            color: Helpers.foodorange800,
+                          )
+                        ],
+                      )),
+                    )
+                  ],
+                );
+              })),
+        )
+      ],
+    );
+  }
+
+  Column heroItems(String url, String text) {
+    return Column(
+      children: [
+        Container(
+          height: 70,
+          width: 70,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(35),
+            image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
+          ),
+        ),
+        BigTextWidget(
+          text: text,
+          size: 18,
+        )
       ],
     );
   }
