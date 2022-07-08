@@ -1,4 +1,4 @@
-#Thu Jul 07 04:28:47 EAT 2022
+#Sat Jul 09 01:29:02 EAT 2022
 base.0=/home/mula/Documents/projects/flutter/food/food/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

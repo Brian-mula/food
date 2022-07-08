@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 class Helpers {
   static const Color foodBlack26 = Colors.black26;
@@ -14,4 +13,12 @@ class Helpers {
   static Color foodorange800 = Colors.orange.shade800;
   static Color foodorange600 = Colors.orange.shade600;
   static Color foodred700 = Colors.red.shade700;
+
+  // !color blue
+  static Color foodBlue700 = Colors.blue.shade700;
+  // green
+  static Color foodgreen700 = Colors.green.shade700;
+
+  // gray
+  static Color foodgrey700 = Colors.grey.shade100;
 }

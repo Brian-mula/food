@@ -15,9 +15,9 @@ class _MainHomePageState extends ConsumerState<MainHomePage> {
   int selectedIndex = 0;
   List<Widget> pages = [
     const HomePage(),
-    Text("data2"),
-    Text("data3"),
-    Text("data4")
+    const Text("data2"),
+    const Text("data3"),
+    const Text("data4")
   ];
   void _onSelectedItem(int index) {
     setState(() {
@@ -28,6 +28,7 @@ class _MainHomePageState extends ConsumerState<MainHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Helpers.foodWhite,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Helpers.foodBlack54),
         backgroundColor: Helpers.foodWhite,

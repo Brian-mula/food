@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/views/food/food_page.dart';
 import 'package:food/views/main_Home_page.dart';
 
 void main() {
@@ -12,11 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const MainHomePage());
+      debugShowCheckedModeBanner: false,
+      title: 'Food',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainHomePage(),
+        '/food': (context) => const FoodPage(),
+      },
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+    );
   }
 }
