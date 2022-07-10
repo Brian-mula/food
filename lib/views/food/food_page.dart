@@ -109,56 +109,63 @@ class _FoodPageState extends ConsumerState<FoodPage> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2),
                       itemBuilder: (context, index) {
-                        return Card(
-                          child: Container(
-                            height: 210,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Wrap(
-                              alignment: WrapAlignment.start,
-                              children: [
-                                Container(
-                                  height: 100,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      image: const DecorationImage(
-                                          image: NetworkImage(
-                                              'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1cmdlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'),
-                                          fit: BoxFit.cover)),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(
-                                      top: 5, left: 10, right: 10),
-                                  child: const BigTextWidget(
-                                    text: "Burger",
-                                    size: 16,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/details');
+                          },
+                          child: Card(
+                            child: Container(
+                              height: 210,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Wrap(
+                                alignment: WrapAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 100,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        image: const DecorationImage(
+                                            image: NetworkImage(
+                                                'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1cmdlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'),
+                                            fit: BoxFit.cover)),
                                   ),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.only(left: 5),
-                                      child: const BigTextWidget(
-                                        text: "Ksh. 1200",
-                                        color: Helpers.foodBlack54,
-                                      ),
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                        top: 5, left: 10, right: 10),
+                                    child: const BigTextWidget(
+                                      text: "Burger",
+                                      size: 16,
                                     ),
-                                    Container(
-                                      padding: const EdgeInsets.only(right: 4),
-                                      child: Icon(
-                                        Icons.add_shopping_cart,
-                                        color: Helpers.foodorange600,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: const BigTextWidget(
+                                          text: "Ksh. 1200",
+                                          color: Helpers.foodBlack54,
+                                        ),
                                       ),
-                                    )
-                                  ],
-                                )
-                              ],
+                                      Container(
+                                        padding:
+                                            const EdgeInsets.only(right: 4),
+                                        child: Icon(
+                                          Icons.add_shopping_cart,
+                                          color: Helpers.foodorange600,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         );

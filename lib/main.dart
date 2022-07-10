@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food/views/food/detail_page.dart';
 import 'package:food/views/food/food_page.dart';
 import 'package:food/views/main_Home_page.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MainHomePage(),
         '/food': (context) => const FoodPage(),
+        '/details': (context) => const DetailsPage()
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
