@@ -104,33 +104,42 @@ class DetailsPage extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
-                          children: const [
-                            BigTextWidget(
+                          children: [
+                            const BigTextWidget(
                               text: "Size",
                               color: Helpers.foodBlack45,
                             ),
-                            SizedBox(height: 7),
-                            BigTextWidget(text: "Medium")
+                            const SizedBox(height: 7),
+                            BigTextWidget(
+                              text: "Medium",
+                              color: Helpers.foodorange600,
+                            )
                           ],
                         ),
                         Column(
-                          children: const [
-                            BigTextWidget(
+                          children: [
+                            const BigTextWidget(
                               text: "Calories",
                               color: Helpers.foodBlack45,
                             ),
-                            SizedBox(height: 7),
-                            BigTextWidget(text: "20 kols")
+                            const SizedBox(height: 7),
+                            BigTextWidget(
+                              text: "20 kols",
+                              color: Helpers.foodorange600,
+                            )
                           ],
                         ),
                         Column(
-                          children: const [
-                            BigTextWidget(
+                          children: [
+                            const BigTextWidget(
                               text: "Cooking",
                               color: Helpers.foodBlack45,
                             ),
-                            SizedBox(height: 7),
-                            BigTextWidget(text: "10-30 mins")
+                            const SizedBox(height: 7),
+                            BigTextWidget(
+                              text: "10-30 mins",
+                              color: Helpers.foodorange600,
+                            )
                           ],
                         ),
                       ],
