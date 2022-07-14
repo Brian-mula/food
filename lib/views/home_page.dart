@@ -102,7 +102,8 @@ class HomePage extends ConsumerWidget {
                         itemBuilder: ((context, index) {
                           return GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/pizza');
+                              Navigator.pushNamed(context, '/pizza',
+                                  arguments: data[index]);
                             },
                             child: Row(
                               children: [

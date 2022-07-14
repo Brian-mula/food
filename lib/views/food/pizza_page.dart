@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/constants/helpers.dart';
+import 'package:food/logic/models/foods.dart';
 import 'package:food/widgets/big_text_widget.dart';
 
 class PizzaPage extends ConsumerWidget {
@@ -8,6 +9,7 @@ class PizzaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final args = ModalRoute.of(context)!.settings.arguments as FoodModel;
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
@@ -21,7 +23,7 @@ class PizzaPage extends ConsumerWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/food');
+                      Navigator.pushNamed(context, '/');
                     },
                     child: const Icon(
                       Icons.arrow_back,
@@ -46,10 +48,8 @@ class PizzaPage extends ConsumerWidget {
               decoration: BoxDecoration(
                   color: Helpers.foodgreen700,
                   borderRadius: BorderRadius.circular(5),
-                  image: const DecorationImage(
-                      image: NetworkImage(
-                          "https://cdn.pixabay.com/photo/2016/05/25/10/43/hamburger-1414423__340.jpg"),
-                      fit: BoxFit.cover)),
+                  image: DecorationImage(
+                      image: NetworkImage(args.img!), fit: BoxFit.cover)),
             ),
             // !underscore section
             Container(
@@ -67,8 +67,8 @@ class PizzaPage extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const BigTextWidget(
-                        text: "Beef burger",
+                      BigTextWidget(
+                        text: args.name!,
                         size: 18,
                         color: Helpers.foodBlack45,
                       ),
@@ -147,9 +147,7 @@ class PizzaPage extends ConsumerWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
-                    child: const BigTextWidget(
-                        text:
-                            "This is a Kenyan top meal taken by almost everyone withi this area and outside the area as well"),
+                    child: BigTextWidget(text: args.description!),
                   ),
                   Container(
                       margin: const EdgeInsets.only(top: 20),
