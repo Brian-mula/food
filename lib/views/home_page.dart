@@ -98,7 +98,7 @@ class HomePage extends ConsumerWidget {
                     return ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: 5,
+                        itemCount: data.length,
                         itemBuilder: ((context, index) {
                           return Row(
                             children: [
