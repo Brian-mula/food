@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/constants/helpers.dart';
 import 'package:food/logic/models/foods.dart';
+import 'package:food/logic/providers/pizza_provider.dart';
 import 'package:food/logic/store/store.dart';
 import 'package:food/widgets/big_text_widget.dart';
 
@@ -12,6 +13,7 @@ class PizzaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final args = ModalRoute.of(context)!.settings.arguments as FoodModel;
     Store store = Store();
+    final addition = ref.watch(addProvider);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
@@ -86,14 +88,14 @@ class PizzaPage extends ConsumerWidget {
                           ),
                           Container(
                             margin: const EdgeInsets.only(right: 5),
-                            child: const BigTextWidget(
-                              text: "3",
+                            child: BigTextWidget(
+                              text: addition.quantity.toString(),
                               color: Helpers.foodBlack87,
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
-                              store.setQuantity(true);
+                              addition.setQuantity();
                             },
                             child: const Icon(
                               Icons.add,

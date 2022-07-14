@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:food/logic/models/foods.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -35,8 +36,25 @@ class Store {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _inCartItems = checkQuantinty(_inCartItems + 1);
+      print(_inCartItems);
     } else {
       _inCartItems = checkQuantinty(_inCartItems - 1);
     }
+  }
+}
+
+class AddQuantity extends ChangeNotifier {
+  int quantity = 0;
+
+  int checkQuantity() {
+    if (quantity < 0) {
+      return 0;
+    }
+    return quantity;
+  }
+
+  void setQuantity() {
+    quantity = quantity + 1;
+    notifyListeners();
   }
 }
