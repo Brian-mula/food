@@ -107,9 +107,8 @@ class HomePage extends ConsumerWidget {
                                 width: 100,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    image: const DecorationImage(
-                                        image: NetworkImage(
-                                            "https://cdn.pixabay.com/photo/2018/07/18/19/12/pasta-3547078__340.jpg"))),
+                                    image: DecorationImage(
+                                        image: NetworkImage(data[index].img!))),
                               ),
                               Container(
                                 padding: const EdgeInsets.only(left: 10),
@@ -117,17 +116,19 @@ class HomePage extends ConsumerWidget {
                                     child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const BigTextWidget(
-                                      text: "Fried chicken",
+                                    BigTextWidget(
+                                      text: data[index].name!,
                                       color: Helpers.foodBlack87,
                                     ),
-                                    const BigTextWidget(
-                                      text: "Well fried and higly consumed",
+                                    BigTextWidget(
+                                      text: data[index]
+                                          .description!
+                                          .substring(0, 6),
                                       color: Helpers.foodBlack45,
                                       size: 14,
                                     ),
                                     BigTextWidget(
-                                      text: "Ksh. 300",
+                                      text: 'Ksh.${data[index].price!}',
                                       color: Helpers.foodorange800,
                                     )
                                   ],
