@@ -100,41 +100,48 @@ class HomePage extends ConsumerWidget {
                         shrinkWrap: true,
                         itemCount: data.length,
                         itemBuilder: ((context, index) {
-                          return Row(
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                        image: NetworkImage(data[index].img!))),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    BigTextWidget(
-                                      text: data[index].name!,
-                                      color: Helpers.foodBlack87,
-                                    ),
-                                    BigTextWidget(
-                                      text: data[index]
-                                          .description!
-                                          .substring(0, 6),
-                                      color: Helpers.foodBlack45,
-                                      size: 14,
-                                    ),
-                                    BigTextWidget(
-                                      text: 'Ksh.${data[index].price!}',
-                                      color: Helpers.foodorange800,
-                                    )
-                                  ],
-                                )),
-                              )
-                            ],
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/pizza');
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: DecorationImage(
+                                          image:
+                                              NetworkImage(data[index].img!))),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      BigTextWidget(
+                                        text: data[index].name!,
+                                        color: Helpers.foodBlack87,
+                                      ),
+                                      BigTextWidget(
+                                        text: data[index]
+                                            .description!
+                                            .substring(0, 6),
+                                        color: Helpers.foodBlack45,
+                                        size: 14,
+                                      ),
+                                      BigTextWidget(
+                                        text: 'Ksh.${data[index].price!}',
+                                        color: Helpers.foodorange800,
+                                      )
+                                    ],
+                                  )),
+                                )
+                              ],
+                            ),
                           );
                         }));
                   },
