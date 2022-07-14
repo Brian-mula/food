@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/constants/helpers.dart';
 import 'package:food/logic/models/foods.dart';
+import 'package:food/logic/store/store.dart';
 import 'package:food/widgets/big_text_widget.dart';
 
 class PizzaPage extends ConsumerWidget {
@@ -10,6 +11,7 @@ class PizzaPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final args = ModalRoute.of(context)!.settings.arguments as FoodModel;
+    Store store = Store();
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
@@ -89,10 +91,15 @@ class PizzaPage extends ConsumerWidget {
                               color: Helpers.foodBlack87,
                             ),
                           ),
-                          const Icon(
-                            Icons.add,
-                            size: 20,
-                            color: Helpers.foodBlack54,
+                          GestureDetector(
+                            onTap: () {
+                              store.setQuantity(true);
+                            },
+                            child: const Icon(
+                              Icons.add,
+                              size: 20,
+                              color: Helpers.foodBlack54,
+                            ),
                           )
                         ],
                       )
