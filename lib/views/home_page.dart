@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/constants/helpers.dart';
+import 'package:food/logic/providers/pizza_provider.dart';
 import 'package:food/widgets/big_text_widget.dart';
 
 class HomePage extends ConsumerWidget {
@@ -8,6 +9,7 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final pizzas = ref.watch(pizzaProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -91,47 +93,53 @@ class HomePage extends ConsumerWidget {
                     size: 18,
                   ),
                 ),
-                ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: ((context, index) {
-                      return Row(
-                        children: [
-                          Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
-                                    image: NetworkImage(
-                                        "https://cdn.pixabay.com/photo/2018/07/18/19/12/pasta-3547078__340.jpg"))),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Expanded(
-                                child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const BigTextWidget(
-                                  text: "Fried chicken",
-                                  color: Helpers.foodBlack87,
-                                ),
-                                const BigTextWidget(
-                                  text: "Well fried and higly consumed",
-                                  color: Helpers.foodBlack45,
-                                  size: 14,
-                                ),
-                                BigTextWidget(
-                                  text: "Ksh. 300",
-                                  color: Helpers.foodorange800,
-                                )
-                              ],
-                            )),
-                          )
-                        ],
-                      );
-                    })),
+                pizzas.when(
+                  data: (data) {
+                    return ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 5,
+                        itemBuilder: ((context, index) {
+                          return Row(
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: const DecorationImage(
+                                        image: NetworkImage(
+                                            "https://cdn.pixabay.com/photo/2018/07/18/19/12/pasta-3547078__340.jpg"))),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const BigTextWidget(
+                                      text: "Fried chicken",
+                                      color: Helpers.foodBlack87,
+                                    ),
+                                    const BigTextWidget(
+                                      text: "Well fried and higly consumed",
+                                      color: Helpers.foodBlack45,
+                                      size: 14,
+                                    ),
+                                    BigTextWidget(
+                                      text: "Ksh. 300",
+                                      color: Helpers.foodorange800,
+                                    )
+                                  ],
+                                )),
+                              )
+                            ],
+                          );
+                        }));
+                  },
+                  error: (err, stack) => Text('Error: $err'),
+                  loading: () => const CircularProgressIndicator(),
+                )
               ],
             ),
           ),

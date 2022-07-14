@@ -12,9 +12,10 @@ class Store {
   };
 
   Future<List<FoodModel>> getPizzas() async {
-    final response = await http.get(Uri.parse(_baseUrl));
+    final response = await http.get(Uri.parse(_baseUrl), headers: _header);
     if (response.statusCode == 200) {
-      return Foods.fromJson(jsonDecode(response.body)).food;
+      List jsonResponse = jsonDecode(response.body);
+      return jsonResponse.map((pizza) => FoodModel.fromJson(pizza)).toList();
     } else {
       throw Exception('Failed to load pizza');
     }

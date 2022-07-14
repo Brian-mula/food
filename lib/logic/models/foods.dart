@@ -1,22 +1,3 @@
-class Foods {
-  int? totalSize;
-  late List<FoodModel> _foods;
-  List<FoodModel> get food => _foods;
-  Foods({this.totalSize, required food}) {
-    this._foods = food;
-  }
-  Foods.fromJson(Map<String, dynamic> json) {
-    totalSize = json['total_size'];
-
-    if (json['products'] != null) {
-      _foods = <FoodModel>[];
-      json['products'].forEach((v) {
-        food.add(FoodModel.fromJson(v));
-      });
-    }
-  }
-}
-
 class FoodModel {
   int? id;
   String? name;
