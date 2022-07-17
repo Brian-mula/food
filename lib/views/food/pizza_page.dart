@@ -13,7 +13,7 @@ class PizzaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final args = ModalRoute.of(context)!.settings.arguments as FoodModel;
     Store store = Store();
-    final addition = ref.watch(addProvider);
+    final stores = ref.watch(storeProvider);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
@@ -80,22 +80,27 @@ class PizzaPage extends ConsumerWidget {
                         children: [
                           Container(
                             margin: const EdgeInsets.only(right: 5),
-                            child: const Icon(
-                              Icons.remove,
-                              size: 20,
-                              color: Helpers.foodBlack45,
+                            child: GestureDetector(
+                              onTap: () {
+                                stores.setQuantity(true);
+                              },
+                              child: const Icon(
+                                Icons.remove,
+                                size: 20,
+                                color: Helpers.foodBlack45,
+                              ),
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(right: 5),
                             child: BigTextWidget(
-                              text: addition.quantity.toString(),
+                              text: stores.quantity.toString(),
                               color: Helpers.foodBlack87,
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
-                              addition.setQuantity();
+                              stores.setQuantity(false);
                             },
                             child: const Icon(
                               Icons.add,
