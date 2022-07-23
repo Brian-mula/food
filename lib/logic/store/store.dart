@@ -13,6 +13,8 @@ class Store extends ChangeNotifier {
   };
   int _quantity = 0;
   int get quantity => _quantity;
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems;
 
   Future<List<FoodModel>> getPizzas() async {
     final response = await http.get(Uri.parse(_baseUrl), headers: _header);
@@ -35,8 +37,15 @@ class Store extends ChangeNotifier {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _quantity = checkQuantity(_quantity + 1);
+      print('increment');
     } else {
       _quantity = checkQuantity(_quantity - 1);
     }
+    notifyListeners();
+  }
+
+  initValue() {
+    _quantity = 0;
+    _inCartItems = 0;
   }
 }

@@ -40,6 +40,7 @@ class _FoodPageState extends ConsumerState<FoodPage> {
             children: [
               // !search input
               Container(
+                height: 50,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: CustomTextInput(
                     controller: searchController,

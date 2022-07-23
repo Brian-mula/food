@@ -82,7 +82,7 @@ class PizzaPage extends ConsumerWidget {
                             margin: const EdgeInsets.only(right: 5),
                             child: GestureDetector(
                               onTap: () {
-                                stores.setQuantity(true);
+                                stores.setQuantity(false);
                               },
                               child: const Icon(
                                 Icons.remove,
@@ -100,7 +100,7 @@ class PizzaPage extends ConsumerWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              stores.setQuantity(false);
+                              stores.setQuantity(true);
                             },
                             child: const Icon(
                               Icons.add,
