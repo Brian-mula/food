@@ -7,3 +7,7 @@ Store store = Store();
 final pizzaProvider = FutureProvider<List<FoodModel>>((ref) async {
   return await store.getPizzas();
 });
+
+final storeProvider = ChangeNotifierProvider<Store>((ref) {
+  return Store();
+});
