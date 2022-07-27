@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food/constants/helpers.dart';
 import 'package:food/logic/models/foods.dart';
 import 'package:food/logic/providers/pizza_provider.dart';
+import 'package:food/logic/store/cart_store.dart';
 import 'package:food/logic/store/store.dart';
 import 'package:food/widgets/big_text_widget.dart';
 
@@ -13,6 +14,7 @@ class PizzaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final args = ModalRoute.of(context)!.settings.arguments as FoodModel;
     Store store = Store();
+    store.initValue(CartStore());
     final stores = ref.watch(storeProvider);
     return Scaffold(
       body: Container(
@@ -172,19 +174,26 @@ class PizzaPage extends ConsumerWidget {
                             text: "Ksh. 250",
                             color: Helpers.foodorange600,
                           ),
-                          Container(
-                            padding: const EdgeInsets.only(top: 5, left: 5),
-                            height: 40,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              color: Helpers.foodorange600,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Center(
-                              child: BigTextWidget(
-                                text: "CheckOut",
-                                color: Helpers.foodWhite,
-                                size: 20,
+                          GestureDetector(
+                            onTap: () {
+                              print("am being clicked");
+                              store.addItem(args);
+                              print("after being clicked");
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(top: 5, left: 5),
+                              height: 40,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                color: Helpers.foodorange600,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: const Center(
+                                child: BigTextWidget(
+                                  text: "CheckOut",
+                                  color: Helpers.foodWhite,
+                                  size: 20,
+                                ),
                               ),
                             ),
                           )
