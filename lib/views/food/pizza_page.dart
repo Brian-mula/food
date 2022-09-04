@@ -13,7 +13,7 @@ class PizzaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final args = ModalRoute.of(context)!.settings.arguments as FoodModel;
     Store store = Store();
-    final stores = ref.watch(storeProvider);
+    // final stores = ref.watch(allFoodProvider);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
@@ -53,7 +53,7 @@ class PizzaPage extends ConsumerWidget {
                   color: Helpers.foodgreen700,
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
-                      image: NetworkImage(args.img!), fit: BoxFit.cover)),
+                      image: NetworkImage(args.image!), fit: BoxFit.cover)),
             ),
             // !underscore section
             Container(
@@ -72,7 +72,7 @@ class PizzaPage extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BigTextWidget(
-                        text: args.name!,
+                        text: args.title!,
                         size: 18,
                         color: Helpers.foodBlack45,
                       ),
@@ -82,7 +82,7 @@ class PizzaPage extends ConsumerWidget {
                             margin: const EdgeInsets.only(right: 5),
                             child: GestureDetector(
                               onTap: () {
-                                stores.setQuantity(false);
+                                // stores.setQuantity(false);
                               },
                               child: const Icon(
                                 Icons.remove,
@@ -93,14 +93,14 @@ class PizzaPage extends ConsumerWidget {
                           ),
                           Container(
                             margin: const EdgeInsets.only(right: 5),
-                            child: BigTextWidget(
-                              text: stores.quantity.toString(),
+                            child: const BigTextWidget(
+                              text: '0',
                               color: Helpers.foodBlack87,
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
-                              stores.setQuantity(true);
+                              // stores.setQuantity(true);
                             },
                             child: const Icon(
                               Icons.add,

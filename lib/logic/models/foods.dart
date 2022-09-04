@@ -1,41 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class FoodModel {
   int? id;
-  String? name;
+  String? title;
   bool? veg;
   int? price;
   String? description;
   int? quantity;
-  String? img;
+  String? image;
 
   FoodModel({
     this.id,
-    this.name,
+    this.title,
     this.veg,
     this.price,
     this.description,
     this.quantity,
-    this.img,
+    this.image,
   });
 
-  FoodModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    veg = json['veg'];
-    price = json['price'];
-    description = json['description'];
-    quantity = json['quantity'];
-    img = json['img'];
+  factory FoodModel.fromJson(DocumentSnapshot json) {
+    return FoodModel(
+      id: json['id'] ?? '',
+      title: json['name'] ?? '',
+      veg: json['veg'] ?? '',
+      price: json['price'] ?? '',
+      description: json['description'] ?? '',
+      quantity: json['quantity'] ?? '',
+      image: json['image'] ?? '',
+    );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
-    data['name'] = this.name;
+    data['name'] = this.title;
     data['veg'] = this.veg;
     data['price'] = this.price;
     data['description'] = this.description;
     data['quantity'] = this.quantity;
-    data['img'] = this.img;
+    data['img'] = this.image;
 
     return data;
   }

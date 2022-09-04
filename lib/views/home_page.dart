@@ -9,7 +9,7 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pizzas = ref.watch(pizzaProvider);
+    final pizzas = ref.watch(allFoodProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -113,8 +113,8 @@ class HomePage extends ConsumerWidget {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       image: DecorationImage(
-                                          image:
-                                              NetworkImage(data[index].img!))),
+                                          image: NetworkImage(
+                                              data[index].image!))),
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 10),
@@ -124,7 +124,7 @@ class HomePage extends ConsumerWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       BigTextWidget(
-                                        text: data[index].name!,
+                                        text: data[index].title!,
                                         color: Helpers.foodBlack87,
                                       ),
                                       BigTextWidget(

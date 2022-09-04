@@ -4,10 +4,6 @@ import 'package:food/logic/store/store.dart';
 
 Store store = Store();
 
-final pizzaProvider = FutureProvider<List<FoodModel>>((ref) async {
-  return await store.getPizzas();
-});
-
-final storeProvider = ChangeNotifierProvider<Store>((ref) {
-  return Store();
+final allFoodProvider = StreamProvider<List<FoodModel>>((ref) async* {
+  yield* store.getAllFood;
 });

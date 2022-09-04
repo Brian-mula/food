@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/mula/Documents/projects/flutter/food/food/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/home/mula/Documents/projects/flutter/food/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/mula/Documents/projects/flutter/food/food/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/home/mula/Documents/projects/flutter/food/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
